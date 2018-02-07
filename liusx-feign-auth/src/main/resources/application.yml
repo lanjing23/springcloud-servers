@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: liusx-feign-auth
+server:
+  port: 9081
+
+eureka:
+  instance:
+    hostname: 127.0.0.1
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+  client:
+    register-with-eureka: false
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://user:123456@${eureka.instance.hostname}:8761/eureka/  #注册 中心已经开启认证
